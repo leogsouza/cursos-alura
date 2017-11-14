@@ -28,11 +28,11 @@ public class ProdutosController {
 	}
 	
 	@RequestMapping(method=RequestMethod.POST)
-	public String gravar(Produto produto, RedirectAttributes redirectAttributes) {
+	public ModelAndView gravar(Produto produto, RedirectAttributes redirectAttributes) {
 		System.out.println(produto);
 		produtoDAO.gravar(produto);
 		redirectAttributes.addFlashAttribute("sucesso", "Produto cadastrado com sucesso!");
-		return "redirect:produtos";
+		return new ModelAndView("redirect:/produtos");
 	}
 	
 	@RequestMapping(method=RequestMethod.GET)
